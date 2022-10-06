@@ -119,7 +119,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
+        // press and hold to remove
+        // taken from https://firebase.google.com/docs/firestore/manage-data/delete-data
         cityList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -127,9 +128,6 @@ public class MainActivity extends AppCompatActivity {
                 selectedItem = position;
                 selectedCity = cityDataList.get(selectedItem);
                 final String cityNameRemove = selectedCity.getCityName();
-                //final String provinceNameRemove = selectedCity.getProvinceName();
-                //HashMap<String, String> dataRemove = new HashMap<>();
-                //dataRemove.put("Province Name", provinceNameRemove);
                 collectionReference
                         .document(cityNameRemove)
                         .delete()
